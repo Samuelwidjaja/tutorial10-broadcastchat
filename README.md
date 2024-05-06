@@ -26,3 +26,14 @@ port beda:
 Seperti yang dijelaskan dalam tutorial, koneksi antara client dan server merupakan hubungan dua arah, yang memerlukan modifikasi di kedua sisi jika terjadi perubahan. Dalam kasus ini, modifikasi dilakukan dengan mengubah port menjadi 8080 di bagian server.rs, yaitu TcpListener::bind("127.0.0.1:8080").await?, dan di client.rs, yaitu ws://127.0.0.1:2000. Dengan melakukan perubahan port di kedua sisi, koneksi antara client dan server dapat dipastikan berjalan dengan lancar tanpa adanya gangguan.
 
 Sama-sama menggunakan protokol yang sama, yaitu WebSocket yang diimplementasikan melalui library tokio_websockets, untuk mendukung komunikasi real-time. Di server.rs, WebSocket dijelaskan menggunakan WebSocketStream dan ServerBuilder, sementara di client.rs, menggunakan ClientBuilder dan WebSocketStream.
+
+*2.3. Small changes. Add some information to client*
+![alt text](image-7.png)
+![alt text](image-8.png)
+
+1. Mengubah teks yang dikirimkan secara broadcast menjadi bcast_tx.send(format!("{addr} : {text}"))?;. Hal ini dilakukan untuk menyisipkan informasi IP dan Port dari pengirim ke dalam pesan.
+
+2. Menambahkan nama pengirim pada server.rs di bagian New connection from Divie's Computer {addr:?}. Ini dilakukan untuk memberikan informasi yang lebih lengkap tentang koneksi yang berasal dari komputer pengirim.
+3. Menambahkan nama pengirim pada client.rs di bagian Divie's Computer - From server: {}", text. Tujuannya adalah untuk mengetahui asal pesan dan mengidentifikasi sumber pesan, yaitu komputer pengirim.
+
+Dengan melakukan perubahan ini, pesan yang dikirimkan akan mencakup informasi yang lebih lengkap tentang pengirim, termasuk IP dan Port-nya, serta memberikan pemahaman yang lebih baik tentang sumber pesan pada sisi server dan client.
