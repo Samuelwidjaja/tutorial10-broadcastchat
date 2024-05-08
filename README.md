@@ -33,7 +33,7 @@ Sama-sama menggunakan protokol yang sama, yaitu WebSocket yang diimplementasikan
 
 1. Mengubah teks yang dikirimkan secara broadcast menjadi bcast_tx.send(format!("{addr} : {text}"))?;. Hal ini dilakukan untuk menyisipkan informasi IP dan Port dari pengirim ke dalam pesan.
 
-2. Menambahkan nama pengirim pada server.rs di bagian New connection from Divie's Computer {addr:?}. Ini dilakukan untuk memberikan informasi yang lebih lengkap tentang koneksi yang berasal dari komputer pengirim.
-3. Menambahkan nama pengirim pada client.rs di bagian Divie's Computer - From server: {}", text. Tujuannya adalah untuk mengetahui asal pesan dan mengidentifikasi sumber pesan, yaitu komputer pengirim.
+2. Menambahkan nama pengirim pada server.rs di bagian New connection from Samuel's Computer {addr:?}. Ini dilakukan untuk memberikan informasi yang lebih lengkap tentang koneksi yang berasal dari komputer pengirim.
+3. Menambahkan nama pengirim pada client.rs di bagian Samuel's Computer - From server: {}", text. Tujuannya adalah untuk mengetahui asal pesan dan mengidentifikasi sumber pesan, yaitu komputer pengirim.
 
 Dengan melakukan perubahan ini, pesan yang dikirimkan akan mencakup informasi yang lebih lengkap tentang pengirim, termasuk IP dan Port-nya, serta memberikan pemahaman yang lebih baik tentang sumber pesan pada sisi server dan client.
